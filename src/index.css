@@ -1,13 +1,168 @@
-body {
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  width: 100vw;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #c0ece9;
+  height: 100%;
+  overflow-x: hidden;
+}
+.firstFont {
+  font-family: 'Julius Sans One', sans-serif;
+  font-weight: 800;
+}
+.secondFont {
+  font-family: 'Crimson Text', serif;
+  font-weight: 500;
+  color: #17252a;
+}
+.redFont {
+  color: #ec0c0c;
+}
+
+
+/* Intro Component */
+.introBox {
+  text-align: center;
+  background-color: #c0ece9;
+}
+.introText {
+  color: #17252a;
+}
+.introWrap {
+  height: 100vh;
+  background: rgb(43,114,120);
+  background: radial-gradient(circle, rgba(43,114,120,1) 0%, rgba(192,236,233,1) 100%);
+}
+
+
+/* Navbar Component */
+.myNav {
+  list-style-type: none;
+}
+#navID {
+  height: 43px;
+  z-index: 9999;
+  background-color: #17252a;
+}  
+.listItem {
+  display: inline-block;
+}  
+.navLink {
+  text-decoration: none;
+  font-weight: bold;
+  color: #ec0c0c;
+}
+.navLink:hover {
+  text-decoration: none;
+  color: #feffff;
+  font-weight: bolder;
+}
+.selected {
+  font-weight: bold;
+  color: #feffff;
+}
+
+
+/* Works Component */
+.worksWrap {
+  height: 100vh;
+}  
+.workThumbnail {
+  height: 80%;
+  width: 80%;
+  display: block;
+}  
+.sectionHead {
+  padding: 1em;
+}  
+.workDescription {
+  font-size: large;
+  margin-bottom: 3em;
+}  
+.workTitle {
+  font-weight: bold;
+  text-decoration: none;
+  color: black;
+}  
+
+
+
+/* Skills Component */
+.skillsWrap {
+  height: 100vh;
+  background-color: #86ccc7;
+  padding-top: 43px;
+}  
+.myIcons {
+  height: 3.3em;
+  width: 3.3em;  
+  display: block;
+}  
+.iconLabel {
+  display: inline-block;
+  font-size: 1.1em;
+}  
+.devicon-git-plain {
+  max-width: 2em;
+}  
+.deviconIcon {
+  font-size: 3.1em;
+  display: block;
+}  
+
+
+
+/* About Component */
+.aboutWrap {
+  height: 100vh;
+  padding-top: 43px;
+}
+
+
+
+
+
+/* Footer */
+footer {
+  height: 35vh;
+  background-color: #17252a;
+
+}
+.footerContent {
+  text-align: center;
+}
+.titleLabel {
+  display: block;
+}
+.footLinkList {
+  list-style-type: none;
+}
+.footLinks {
+  display: inline-block;
+}
+.footerName {
+  font-weight: bolder;
+}
+.footLinkLabel {
+  font-weight: bold;
+  color: #feffff;
+}
+.footLinkIcon {
+  height: 2em;
+  width: 2em;
+  margin: 10px;
+}
+.emailAdd {
+  color: #feffff;
+}
+.copyright {
+  display: block;
+  background-color: #17252a;
+  color: #feffff;
 }
