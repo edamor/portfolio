@@ -5,9 +5,11 @@ import os1 from '../../images/OnlineStore-thumbnail.png';
 
 function Works() {
 
+
+
    return (
       <React.Fragment>
-         <div className="worksWrap row mx-0" id="works">
+         <div className="worksWrap row mx-0" id="works"> 
             <div className="container">
                <h2 className="sectionHead secondFont text-left m-0 w-100 pl-3">
                   My <span className="redFont firstFont">Works</span>

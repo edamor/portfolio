@@ -37,7 +37,7 @@ function Skills() {
                   </div>
                   <div className="col-12 text-center secondFont">
                      <p className="iconLabel mx-4">
-                        <i className="devicon-react-original-wordmark colored deviconIcon mb-2"></i>
+                        <i className="devicon-react-original-wordmark deviconIcon mb-2"></i>
                         React JS
                      </p>
                      <p className="iconLabel mx-4">

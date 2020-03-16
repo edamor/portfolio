@@ -7,10 +7,12 @@ import About from '../About/Index';
 import Footer from '../Footer/Index';
 
 
+
 function Home(props) {
 
    let [scrollPos, setScrollPos] = useState(0);
-   let [isActive, setIsActive] = useState(false);
+
+   
    
 
    window.addEventListener("scroll", (e) => {
@@ -21,20 +23,20 @@ function Home(props) {
 
       setScrollPos(document.documentElement.scrollTop);
 
+
       if (docWidth > 750) {
-         if (scroll < 697.77) {
+         if (scroll < 694.44) {
             nav.style.position = "relative";
             nav.style.height = "43px";
-            firstSection.style.marginTop = "0px";
+            firstSection.style.paddingTop = "0px";
          } else {
             nav.style.top = "0px";
             nav.style.height = "43px";
             nav.style.position = "fixed";
-            firstSection.style.marginTop = "43px";
+            firstSection.style.paddingTop = "43px";
          }
-      }     
+      }
    })
-   
 
    let renderIntro = () => (
       <Intro />
@@ -60,7 +62,7 @@ function Home(props) {
             {renderIntro()}
             <Navbar 
                {...props}
-               scrollPos={scrollPos}  
+               scrollPos={scrollPos}
             />
             {renderWorks()}
             {renderSkills()}

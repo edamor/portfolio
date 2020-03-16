@@ -4,25 +4,23 @@ import { NavHashLink as NavLink } from 'react-router-hash-link';
 function Navbar(props) {
 
    let workSelector = () => {
-      if (props.scrollPos >= 694 && props.scrollPos <= 1398) {
+      if (props.scrollPos >= 518 && props.scrollPos <= 1148) {
          return "selected"; 
       }
-      else return "";
+      else return ""; 
    }
    let skillSelector = () => {
-      if (props.scrollPos > 1398 && props.scrollPos <= 2088) {
+      if (props.scrollPos > 1148 && props.scrollPos <= 1888) {
          return "selected";
       }
       else return "";
    }
    let aboutSelector = () => {
-      if (props.scrollPos > 2088) {
+      if (props.scrollPos > 1888) {
          return "selected";
       }
       else return "";
    }
-
-   console.log(props.scrollPos)
 
 
    return (
