@@ -111,9 +111,6 @@ body {
   display: inline-block;
   font-size: 1.1em;
 }  
-.devicon-git-plain {
-  max-width: 2em;
-}  
 .deviconIcon {
   font-size: 3.1em;
   display: block;
@@ -173,6 +170,9 @@ footer {
 
 
 
+
+
+
 @media screen and (max-width: 750px) {
   .worksWrap {
     height: 100%;
@@ -186,4 +186,11 @@ footer {
   footer {
     height: 40%;
   }
+  .myIcons {
+  height: 2em;
+  width: 2em;  
+  }  
+  .deviconIcon {
+    font-size: 2em;
+  }  
 }
