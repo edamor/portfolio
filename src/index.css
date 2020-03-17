@@ -49,6 +49,8 @@ body {
   height: 43px;
   z-index: 9999;
   background-color: #17252a;
+  position: fixed;
+  top: 0px;
 }  
 .listItem {
   display: inline-block;
@@ -72,6 +74,7 @@ body {
 /* Works Component */
 .worksWrap {
   height: 100vh;
+  padding-top: 43px;
 }  
 .workThumbnail {
   height: 80%;
@@ -165,4 +168,22 @@ footer {
   display: block;
   background-color: #17252a;
   color: #feffff;
+}
+
+
+
+
+@media screen and (max-width: 750px) {
+  .worksWrap {
+    height: 100%;
+  }
+  .skillsWrap {
+    height: 100%;
+  }
+  .aboutWrap {
+    height: 100%;
+  }
+  footer {
+    height: 40%;
+  }
 }

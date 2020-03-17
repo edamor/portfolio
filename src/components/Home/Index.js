@@ -6,41 +6,21 @@ import Works from '../Works/Index';
 import About from '../About/Index';
 import Footer from '../Footer/Index';
 import Navbar from '../Navbar/Index';
+import { Transition, animated } from 'react-spring/renderprops';
 
 
 
 function Home(props) {
    
+   let [isVisible, setIsVisible] = useState(false);
 
-
-   // let [scrollPos, setScrollPos] = useState(0);
+   let toggler = (e) => setIsVisible(e)
    
-   
-
-   // window.addEventListener("scroll", (e) => {
-   //    let scroll = window.scrollY;
-   //    let docWidth = window.innerWidth;
-   //    let nav = document.querySelector("#navID");
-   //    let firstSection = document.querySelector("#works");
-
-   //    setScrollPos(document.documentElement.scrollTop);
-
-
-   //    if (docWidth > 750) {
-   //       if (scroll < 694.44) {
-            
-   //       } else {
-   //          nav.style.top = "0px";
-   //          nav.style.height = "43px";
-   //          nav.style.position = "fixed";
-   //          firstSection.style.paddingTop = "43px";
-   //       }
-   //    }
-   // })
-
    let renderIntro = () => (
-      <Intro />
-   )
+      <Intro 
+         toggler={toggler} 
+      />
+      )
    let renderWorks = () => (
       <Works />
    )
@@ -51,20 +31,24 @@ function Home(props) {
       <About />  
    )
    
-   
-
-
-   // <Navbar 
-   //    {...props}
-   //    scrollPos={scrollPos}
-   // />
-   
 
    return (
       <React.Fragment>
          <div className="App">
             {renderIntro()}
-            <Navbar {...props} />
+            <Transition
+               items={isVisible}
+               from={{ opacity: 0}}
+               enter={{ opacity: 1}}
+               leave={{ opacity: 0}}
+               config={{ mass: 1, tension: 250, friction: 18 }}
+            >
+               {show => show && (props => (
+                  <animated.div style={props} >
+                     <Navbar />
+                  </animated.div>
+               ))}
+            </Transition>
             {renderWorks()}
             {renderSkills()}
             {renderAbout()}

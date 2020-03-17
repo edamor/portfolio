@@ -1,13 +1,33 @@
-import React from 'react';
+import React, { useLayoutEffect } from 'react';
 import { Spring } from 'react-spring/renderprops';
 
 
-function Intro() {
+function Intro(props) {
+
+   useLayoutEffect(() => {
+      let first = document.querySelector("#introID");
+      let firstTopPos = parseFloat(window.getComputedStyle(first).getPropertyValue("height")) - 43;
+
+      let onScroll = () => {
+         let scrollPosition = window.scrollY;
+
+         if (scrollPosition < firstTopPos) {
+            props.toggler(false)
+         } else props.toggler(true);
+
+      }
+
+
+
+      window.addEventListener("scroll", onScroll);
+      return () => window.removeEventListener("scroll", onScroll);
+   }, [])
+   
 
 
    return (
       <React.Fragment>
-         <div className="introWrap row mx-0">
+         <div className="introWrap row mx-0" id="introID">
             <Spring
                from={{ opacity: 0 }}
                to={{ opacity: 1 }}
