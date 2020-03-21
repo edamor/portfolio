@@ -3,24 +3,24 @@ import html from 'programming-languages-logos/src/html/html.svg';
 import css from 'programming-languages-logos/src/css/css.svg';
 import javascript from 'programming-languages-logos/src/javascript/javascript.svg';
 import java from 'programming-languages-logos/src/java/java.svg';
-import { Transition, animated } from 'react-spring/renderprops';
+import { animated, useSpring } from 'react-spring';
 
 function Skills(props) {
 
+   let springSkillsProps = useSpring({
+      to: {
+         position: "relative",
+         opacity: props.isVisible.second ? 1 : 0,
+         right: props.isVisible.second ? "0px" : "-500px"
+      },
+      config: { mass: 3, tension: 150, friction: 50, clamp: true  }
+   })
   
    return (
 
       <React.Fragment>
-         <div className="aniClass skillsWrap row mx-0" id="skills">
-            <Transition
-               items={props.sectionVisible.second}
-               from={{ opacity: 0 }}
-               enter={{ opacity: 1 }}
-               leave={{ opacity: 0 }}
-               config={{ mass: 3, tension: 50, friction: 28 }}
-            >
-               {show => show && (aniProps => (
-                  <animated.div style={aniProps} >
+         <div className="aniClass skillsWrap row mx-0" id="skills" ref={props.forwardedRef}>
+            <animated.div style={springSkillsProps} className="container">
                      <div className="container">
                         <h2 className="sectionHead secondFont text-md-right text-left m-0 w-100 pr-3">
                            Technical <span className="redFont firstFont">Skills</span>
@@ -91,10 +91,8 @@ function Skills(props) {
                               </p>
                            </div>
                         </div>
-                     </div>
+                    </div>
                   </animated.div>
-               ))}
-            </Transition>
          </div>
       </React.Fragment>
    )

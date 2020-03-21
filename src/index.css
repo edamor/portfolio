@@ -193,7 +193,7 @@ footer {
 @media screen and (max-width: 750px) {
   .App {
     background: linear-gradient(to top, rgba(192,236,233,1) 0%, rgba(43,114,120,1) 100%);
-    height: 100%;
+    
   }
   .worksWrap {
     height: 100%;

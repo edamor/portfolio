@@ -1,24 +1,25 @@
 import React from 'react';
 import cs1 from '../../images/CS1-thumbnail.png';
 import os1 from '../../images/OnlineStore-thumbnail.png';
-import { Transition, animated } from 'react-spring/renderprops';
+import { animated, useSpring } from 'react-spring';
 
 
 function Works(props) {
+
+   let springWorksProps = useSpring({
+      to: { 
+         position: "relative",
+         opacity: props.isVisible.first ? 1 : 0,
+         left: props.isVisible.first ? "0px" : "-500px",
+      },
+      config: { mass: 3, tension: 150, friction: 50, clamp: true }
+   })
   
 
    return (
       <React.Fragment>
-         <div className="aniClass worksWrap row mx-0" id="works" >
-         <Transition
-            items={props.sectionVisible.first}
-            from={{ opacity: 0 }}
-            enter={{ opacity: 1 }}
-            leave={{ opacity: 0 }}
-            config={{ mass: 3, tension: 50, friction: 28 }}
-         >
-            {show => show && (aniProps => (
-               <animated.div style={aniProps} >
+         <div className="aniClass worksWrap row mx-0" id="works" ref={props.forwardedRef}>
+               <animated.div style={springWorksProps} >
                   <div className="container">
                      <h2 className="sectionHead secondFont text-left m-0 w-100 pl-3">
                         My <span className="redFont firstFont">Works</span>
@@ -76,11 +77,11 @@ function Works(props) {
                      </div>
                   </div>
                </animated.div>
-            ))}
-         </Transition>
             </div>
       </React.Fragment>
    )
 }
 
 export default Works;
+
+
