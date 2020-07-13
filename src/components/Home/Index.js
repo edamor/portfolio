@@ -22,86 +22,68 @@ function Home(props) {
       second: false,
       third: false
    });
-   let [x, setX] = useState(0)
-   let [scrollPos, setScrollPos] = useState(0);
+
+   let height = ({
+      intro: !introRef.current ? 0 : introRef.current.offsetHeight,
+      first: !worksRef.current ? 0 : worksRef.current.offsetHeight,
+      second: !skillsRef.current ? 0 : skillsRef.current.offsetHeight,
+      third: !aboutRef.current ? 0 : aboutRef.current.offsetHeight
+   });
+
+   function toggleVisibility(scrollPos) {
+      
+      let offset = 0.5;
+      let w = window.visualViewport.outerWidth;
+
+      if (w <= 749) {
+         console.log("mobile")
+         setSectionVisible({ intro: true, first: true, second: true, third: true });
+         if (scrollPos > (height.intro * 0.2)) {
+            setVisibleNav(true);
+         } else {
+            setVisibleNav(false);
+         }
+      } 
+      
+      if (scrollPos > (height.intro * offset)) {
+         setVisibleNav(true)
+         if (scrollPos >= (height.intro * offset) && scrollPos < (height.intro + height.first * offset)) {
+            setSectionVisible({ intro: false, first: true, second: false, third: false });
+            props.history.push("/#works");
+         }
+         if (scrollPos < (height.intro + height.first + height.second * offset)
+            && scrollPos >= (height.intro + height.first * offset)) {
+            setSectionVisible({ intro: false, first: false, second: true, third: false });
+            props.history.push("/#skills");
+         }
+         if (scrollPos >= (height.intro + height.first + height.second * offset)) {
+            setSectionVisible({ intro: false, first: false, second: false, third: true });
+            props.history.push("/#about");
+         }
+      } else {
+         setSectionVisible({ intro: true, first: false, second: false, third: false });
+         setVisibleNav(false);
+         props.history.push("/");
+      }
+   }
+   
    
    useLayoutEffect( () => {
-      let offset = 0.5;
-      let offsetMobile = 0.85;
-      let w = window.screen.availWidth;
-      let height = {
-         intro: (!introRef.current? 0 : introRef.current.scrollHeight),
-         first: (!worksRef.current ? 0: worksRef.current.scrollHeight),
-         second: (!skillsRef.current ? 0 : skillsRef.current.scrollHeight),
-         third: (!aboutRef.current ? 0 : aboutRef.current.scrollHeight)
-      };
       
+      height.intro = (introRef.current.scrollHeight);
+      height.first = (worksRef.current.scrollHeight);
+      height.second = (skillsRef.current.scrollHeight);
+      height.third = (aboutRef.current.scrollHeight)
       
-      
-
       let handleScroll = (e) => {
-        setScrollPos(window.scrollY);
-         
-
-         
-         // if (w > 750) {
-         // } 
-            console.log(321)
-            if (scrollPos > (height.intro * offset)) {
-               setVisibleNav(true)
-               if (scrollPos >= (height.intro * offset) && scrollPos < (height.intro + height.first * offset) ) {
-                  setSectionVisible({intro: false, first: true, second: false, third: false});
-                  props.history.push("/#works");
-               }
-               if (scrollPos < (height.intro + height.first + height.second * offset) 
-                  && scrollPos >= (height.intro + height.first * offset)) {
-                  setSectionVisible({ intro: false, first: false, second: true, third: false });
-                  props.history.push("/#skills");
-               }
-               if (scrollPos >= (height.intro + height.first + height.second * offset)) {
-                  setSectionVisible({ intro: false, first: false, second: false, third: true });
-                  props.history.push("/#about");
-               }
-            } else {
-               setSectionVisible({ intro: true, first: false, second: false, third: false });
-               setVisibleNav(false);
-               props.history.push("/");
-            } 
-
-         // if(w <= 749) {
-         //    console.log(123)
-         //    if (scrollPos > (height.intro * 0.2)) {
-         //       setVisibleNav(true)
-         //       if (scrollPos > (height.intro * 0.3) && scrollPos < (height.intro + height.first * 0.3)) {
-         //          setSectionVisible({ intro: false, first: true, second: false, third: false });
-         //          props.history.push("/#works");
-         //       }
-         //       if (scrollPos > (height.first + height.second * offsetMobile) &&
-         //          scrollPos < (height.first + height.second + height.third * offsetMobile)) {
-         //          setSectionVisible({ intro: false, first: false, second: true, third: false });
-         //          props.history.push("/#skills");
-         //       }
-         //       if (scrollPos > (height.first + height.second + height.third * offsetMobile)) {
-         //          setSectionVisible({ intro: false, first: false, second: false, third: true });
-         //          props.history.push("/#about");
-         //       }
-         //    } else {
-         //       setSectionVisible({ intro: true, first: false, second: false, third: false });
-         //       setVisibleNav(false);
-         //       props.history.push("/");
-         //    } 
-         // } 
-      }
-
-
+         let scrollPos = Math.round(window.visualViewport.pageTop);
+         toggleVisibility(scrollPos);
+      } 
+            
       window.addEventListener("scroll", handleScroll);
       return () => window.removeEventListener("scroll", handleScroll);
-
-   }, [scrollPos]);
+   });
   
-   
-   
-   
 
    return (
       
